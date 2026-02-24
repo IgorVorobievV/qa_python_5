@@ -30,3 +30,6 @@ class BasePage:
 
     def get_text(self, locator):
         return self.find(locator).text
+    
+    def current_url(self):
+        return self.driver.current_url

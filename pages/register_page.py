@@ -19,4 +19,4 @@ class RegisterPage(BasePage):
 
     def click_login_link(self):
         self.click(RegisterLocators.LOGIN_LINK)
-        return self.driver.current_url == LOGIN_URL
+        return self.current_url() == LOGIN_URL

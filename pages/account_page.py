@@ -20,19 +20,15 @@ class AccountPage(BasePage):
     
     def click_constructor_button(self):
         self.click(AccountLocators.CONSTRUCTOR_P)
-        print(self.driver.current_url)
-        print(BASE_URL)
-        return self.driver.current_url == BASE_URL
+        return self.current_url() == BASE_URL
     
     def click_logo(self):
         self.click(AccountLocators.LOGO_IMG)
-        print(self.driver.current_url)
-        print(BASE_URL)
-        return self.driver.current_url == BASE_URL
+        return self.current_url() == BASE_URL
 
     def logout(self):
         self.click(AccountLocators.EXIT_BUTTON)
     
     def click_account_button_without_login(self):
         self.click(LoginLocators.ACCOUNT_BUTTON)
-        return self.driver.current_url == LOGIN_URL
+        return self.current_url() == LOGIN_URL

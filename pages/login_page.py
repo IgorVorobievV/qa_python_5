@@ -19,12 +19,12 @@ class LoginPage(BasePage):
 
     def click_login_button(self):
         self.click(LoginLocators.LOGIN_BUTTON)
-        return self.driver.current_url == LOGIN_URL
+        return self.current_url() == LOGIN_URL
     
     def click_account_button_without_login(self):
         self.click(LoginLocators.ACCOUNT_BUTTON)
-        return self.driver.current_url == LOGIN_URL
+        return self.current_url() == LOGIN_URL
     
     def click_account_button_with_login(self):
         self.click(LoginLocators.ACCOUNT_BUTTON)
-        return self.driver.current_url == ACCOUNT_URL
+        return self.current_url() == ACCOUNT_URL
