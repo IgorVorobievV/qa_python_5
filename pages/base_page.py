@@ -29,6 +29,4 @@ class BasePage:
         element.send_keys(text)    
    
     def check_page(self, url=BASE_URL):
-        print(f'url:{url}')
-        print(f'self.driver.current_url:{self.driver.current_url}')
         return self.driver.current_url == url
