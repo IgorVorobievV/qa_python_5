@@ -13,10 +13,9 @@ def test_success_register(driver):
     #проверь создание аккаунта
     page.open_register_page()
     page.register(name, email, password)
-    message = page.get_flash_message()
-    assert "Такой пользователь уже существует" in message
+    assert page.check_flash_message_account_exists()
 
-def test_invalid_register_invalid_pass_error(driver):
+def test_invalid_register_incorrect_password(driver):
     #зарегистрируй аккаунт с невалидным паролем
     page = RegisterPage(driver)
     page.open_register_page()
@@ -26,11 +25,11 @@ def test_invalid_register_invalid_pass_error(driver):
     page.register(name, email, password)
 
     #проверь вывод ошибки
-    message = page.get_flash_message()
-    assert "Некорректный пароль" in message
+    assert page.check_flash_message_incorrect_password()
 
 def test_success_click_login_link(driver):
     # проверь клик по кнопке «Войти»
     page = RegisterPage(driver)
     page.open_register_page()
-    assert page.click_login_link()
+    page.click_login_link()
+    assert page.check_login_page()

@@ -6,16 +6,19 @@ def test_success_click_buns_button(driver):
     page = MainPage(driver)
     page.open()
     page.click_sauces_button()
-    assert page.click_buns_button()
+    page.click_buns_button()
+    assert page.check_active_buns_button()
 
 def test_success_click_sauces_button(driver):
     # проверь, что работают переходы к разделам: «Соусы»
     page = MainPage(driver)
     page.open()
-    assert  page.click_sauces_button()
+    page.click_sauces_button()
+    assert page.check_active_sauces_button()
 
 def test_success_click_toppings_button(driver):
     # проверь, что работают переходы к разделам: «Начинки»
     page = MainPage(driver)
     page.open()
-    assert page.click_toppings_button()
+    page.click_toppings_button()
+    assert page.check_active_toppings_button()

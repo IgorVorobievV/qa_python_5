@@ -1,7 +1,7 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.common.by import By
-from curl import BASE_URL
+from curl import *
 
 class BasePage:
 
@@ -26,10 +26,9 @@ class BasePage:
     def type(self, locator, text):
         element = self.find(locator)
         element.clear()
-        element.send_keys(text)
-
-    def get_text(self, locator):
-        return self.find(locator).text
-    
-    def current_url(self):
-        return self.driver.current_url
+        element.send_keys(text)    
+   
+    def check_page(self, url=BASE_URL):
+        print(f'url:{url}')
+        print(f'self.driver.current_url:{self.driver.current_url}')
+        return self.driver.current_url == url

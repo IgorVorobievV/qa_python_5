@@ -14,9 +14,14 @@ class RegisterPage(BasePage):
         self.type(RegisterLocators.PASSWORD_INPUT, password)
         self.click(RegisterLocators.SUBMIT_BUTTON)
 
-    def get_flash_message(self):
-        return self.get_text(RegisterLocators.FLASH_MESSAGE)
+    def check_flash_message_account_exists(self):
+        return self.find(RegisterLocators.FLASH_MESSAGE_ACCOUNT_EXISTS).is_displayed()
+    
+    def check_flash_message_incorrect_password(self):
+        return self.find(RegisterLocators.FLASH_MESSAGE_INCORRECT_PASSWORD).is_displayed()
 
     def click_login_link(self):
         self.click(RegisterLocators.LOGIN_LINK)
-        return self.current_url() == LOGIN_URL
+    
+    def check_login_page(self):
+        return self.check_page(LOGIN_URL)

@@ -1,5 +1,6 @@
 from pages.account_page import AccountPage
 from data_gen import *
+from curl import ACCOUNT_URL, LOGIN_URL
 
 def test_success_click_constructor_button(driver):
     # проверь переход по клику на «Конструктор»
@@ -7,7 +8,8 @@ def test_success_click_constructor_button(driver):
     page.open_login_page()
     page.login(right_email, right_pass)
     page.open_account_page()
-    assert page.click_constructor_button()
+    page.click_constructor_button()
+    assert page.check_page()
 
 def test_success_click_logo(driver):
     # проверь переход по клику на логотип Stellar Burgers
@@ -15,7 +17,8 @@ def test_success_click_logo(driver):
     page.open_login_page()
     page.login(right_email, right_pass)
     page.open_account_page()
-    assert page.click_logo()
+    page.click_logo()
+    assert page.check_page()
 
 def test_success_logout(driver):
     # проверь выход по кнопке «Выйти» в личном кабинете
@@ -24,4 +27,5 @@ def test_success_logout(driver):
     page.login(right_email, right_pass)
     page.open_account_page()
     page.logout()
-    assert page.click_account_button_without_login()
+    page.click_account_button()
+    assert page.check_login_page()

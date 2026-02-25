@@ -1,7 +1,7 @@
 from pages.base_page import BasePage
 from locators.account_locators import AccountLocators
 from locators.login_locators import LoginLocators
-from curl import ACCOUNT_URL, BASE_URL, LOGIN_URL
+from curl import ACCOUNT_URL, LOGIN_URL
 
 
 class AccountPage(BasePage):
@@ -20,15 +20,15 @@ class AccountPage(BasePage):
     
     def click_constructor_button(self):
         self.click(AccountLocators.CONSTRUCTOR_P)
-        return self.current_url() == BASE_URL
     
     def click_logo(self):
         self.click(AccountLocators.LOGO_IMG)
-        return self.current_url() == BASE_URL
 
     def logout(self):
         self.click(AccountLocators.EXIT_BUTTON)
     
-    def click_account_button_without_login(self):
+    def click_account_button(self):
         self.click(LoginLocators.ACCOUNT_BUTTON)
-        return self.current_url() == LOGIN_URL
+    
+    def check_login_page(self):
+        return self.check_page(LOGIN_URL)
