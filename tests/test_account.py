@@ -1,6 +1,5 @@
 from pages.account_page import AccountPage
 from data_gen import *
-from curl import ACCOUNT_URL, LOGIN_URL
 
 def test_success_click_constructor_button(driver):
     # проверь переход по клику на «Конструктор»
